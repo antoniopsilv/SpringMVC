@@ -1,5 +1,6 @@
 package br.com.casadocodigo.loja.models;
 
+import java.math.BigDecimal;
 import java.util.Calendar;
 import java.util.List;
 
@@ -14,8 +15,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Entity
 public class Produto {
 	
-	@Id 
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
 	private String titulo;
@@ -81,7 +81,10 @@ public class Produto {
 		this.sumarioPath = sumarioPath;
 	}
 	
-	
+	@Override
+	public String toString() {
+		return "Produto [titulo=" + titulo + ", descricao=" + descricao + ", paginas=" + paginas + "]";
+	}
 	
 	@Override
 	public int hashCode() {
@@ -103,9 +106,10 @@ public class Produto {
 			return false;
 		return true;
 	}
-	@Override
-	public String toString() {
-		return "Produto [titulo=" + titulo + ", descricao=" + descricao + ", paginas=" + paginas + "]";
+	
+	public BigDecimal precoPara(TipoPreco tipoPreco) {
+
+		return precos.stream().filter(preco -> preco.getTipo().equals(tipoPreco)).findFirst().get().getValor();
 	}
 
 }

@@ -23,12 +23,6 @@ public class JPAConfiguration {
 		factoryBean.setJpaVendorAdapter(vendorAdapter);
 		
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
-//		dataSource.setUsername("root");
-//		dataSource.setPassword("");
-//		dataSource.setUrl("jdbc:mysql://localhost/casadocodigo");
-//        dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-//		factoryBean.setDataSource(dataSource);
-		
 		
 		dataSource.setUsername("sa");
 		dataSource.setPassword("sql2019");
@@ -37,7 +31,6 @@ public class JPAConfiguration {
 		factoryBean.setDataSource(dataSource);
 		
 		Properties properties = new Properties();
-//		properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
 		properties.setProperty("hibernate.dialect", "org.hibernate.dialect.SQLServer2012Dialect");
 		properties.setProperty("hibernate.show_sql", "true");
 		properties.setProperty("hibernate.hbm2ddl.auto", "update");
